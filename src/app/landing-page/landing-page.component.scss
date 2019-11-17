@@ -4,9 +4,9 @@
 
     .landing {
         height: 100vh;
-    
+        padding: 0 180px;
         header {
-            width: 100vw;
+            width: 100%;
             display: flex;
             align-items: center;
             height: 200px;
@@ -47,6 +47,13 @@
 
                 }
             }
+        }
+
+        .landing-section {
+            border-radius: 50px;
+            margin: 0 auto;
+            height: 70vh;
+            background-color: $mainColor;
         }
     }
 
