@@ -1,0 +1,74 @@
+@import 'src/assets/styles/variables.scss';
+
+.container {
+
+    .landing {
+        height: 100vh;
+    
+        header {
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            height: 200px;
+
+            .logo {
+                @keyframes rotating {
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+                height: fit-content;
+                margin: 0 auto;
+                background: $mainColor;
+                border-radius: 20em;
+                padding: 0 40px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    border: 3pt solid $grayColor;
+                    .logo-cube {
+                        animation: rotating 1s ease-in-out infinite alternate;
+                    }
+                }
+                .logo-text {
+                    font-size: 96px;
+                    font-family: 'Allerta Stencil', sans-serif;
+                    color: white;
+                }
+
+                .logo-cube {
+                    margin-left: 20px;
+                    height: 80px;
+                    width: 60px;
+                    border-radius: 21px;
+                    background-color: $accentColor;
+
+                }
+            }
+        }
+    }
+
+    .footer {
+        height: 95vh;
+        width: 100vw;
+        background-color: $mainColor;
+
+        .rounding {
+            height: 5vh;
+            width: 100%;
+            background-color: white;
+            border-bottom-left-radius: 70px;
+            border-bottom-right-radius: 70px;
+        }
+
+        .foot-content {
+            height: 100%;
+            width: 100%;
+            background-color: $mainColor;
+        }
+    }
+
+
+}

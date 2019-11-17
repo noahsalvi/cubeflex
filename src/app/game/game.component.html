@@ -1,1 +1,14 @@
-<p>game works!</p>
+<div class="background">
+    <header>
+        <span class="logo" [routerLink]="['/']">
+            <span class="logo-text">
+                CubeFlex
+            </span>
+            <span class="logo-cube"></span>
+        </span>
+    </header>
+
+    <section>
+        <router-outlet></router-outlet>
+    </section>
+</div>

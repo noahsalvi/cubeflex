@@ -7,6 +7,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { GameComponent } from './game/game.component';
 import { StartGameComponent } from './game/start-game/start-game.component';
 import { EndGameComponent } from './game/end-game/end-game.component';
+import { PlayComponent } from './game/play/play.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EndGameComponent } from './game/end-game/end-game.component';
     LandingPageComponent,
     GameComponent,
     StartGameComponent,
-    EndGameComponent
+    EndGameComponent,
+    PlayComponent
   ],
   imports: [
     BrowserModule,
