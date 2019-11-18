@@ -1,5 +1,20 @@
 @import 'src/assets/styles/variables.scss';
 
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .background {
     background-color: $mainColor;
     height: 100vh;
@@ -11,11 +26,7 @@ header {
     height: 200px;
 
     .logo {
-        @keyframes rotating {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+
         height: fit-content;
         margin: 0 auto;
         background: $mainColor;
@@ -24,10 +35,11 @@ header {
         display: flex;
         align-items: center;
         cursor: pointer;
-
+        animation: appear 5s ease;
+        
         &:hover {
             .logo-cube {
-                animation: rotating 1s ease-in-out infinite alternate;
+                animation: rotate 1s ease-in-out infinite alternate;
             }
         }
         .logo-text {

@@ -54,6 +54,21 @@
             margin: 0 auto;
             height: 70vh;
             background-color: $mainColor;
+            display: flex;
+
+            .cal-container {
+                
+            }
+
+            .image-container {
+                
+
+                
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
         }
     }
 
