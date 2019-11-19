@@ -1,0 +1,52 @@
+@import "src/assets/styles/variables";
+
+@keyframes appear-end {
+	0% {
+		opacity: 0;
+		transform: translateY(100px);
+	}
+	70% {
+		opacity: 0.3;
+	}
+	100% {
+		opacity: 1;
+		transform: translate();
+	}
+}
+
+.container {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: appear-end 1s ease-out;
+	animation-fill-mode: forwards;
+
+	h1 {
+		color: white;
+		font-size: 96px;
+		margin-bottom: 30px;
+	}
+
+	h3 {
+		color: white;
+		font-size: 64px;
+		margin-bottom: 80px;
+	}
+
+	.button {
+		background-color: $accentColor2;
+		height: 115px;
+		width: 392px;
+		border-radius: 35px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: grab;
+
+		.button-text {
+			font-size: 48px;
+			color: white;
+		}
+	}
+}
