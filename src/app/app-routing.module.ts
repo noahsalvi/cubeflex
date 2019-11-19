@@ -14,7 +14,8 @@ const routes: Routes = [
     children: [
       { path: "", component: StartGameComponent },
       { path: "play", component: PlayComponent },
-      { path: "end", component: EndGameComponent }
+      { path: "end", component: EndGameComponent },
+      { path: "test", component: EndGameComponent }
     ]
   }
 ];
