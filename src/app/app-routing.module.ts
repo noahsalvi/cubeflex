@@ -12,10 +12,9 @@ const routes: Routes = [
     path: "game",
     component: GameComponent,
     children: [
-      { path: "", component: PlayComponent },
-      { path: "start", component: StartGameComponent },
-      { path: "end", component: EndGameComponent },
-      { path: "test", component: LandingPageComponent }
+      { path: "", component: StartGameComponent },
+      { path: "play", component: PlayComponent },
+      { path: "end", component: EndGameComponent }
     ]
   }
 ];
