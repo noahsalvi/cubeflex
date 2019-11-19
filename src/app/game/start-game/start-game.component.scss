@@ -1,0 +1,21 @@
+@import "src/assets/styles/variables.scss";
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titel {
+  height: auto;
+  #level {
+    color: white;
+    font-size: 96px;
+  }
+}
+
+.seconds {
+  height: auto;
+  font-family: "Poppins", sans-serif;
+}
