@@ -1,60 +1,57 @@
-@import 'src/assets/styles/variables.scss';
+@import "src/assets/styles/variables.scss";
 
 @keyframes rotate {
-    100% {
-        transform: rotate(360deg);
-    }
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes appear {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .background {
-    background-color: $mainColor;
-    height: 100vh;
+	background-color: $mainColor;
+	height: 100vh;
 }
 header {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    height: 200px;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	height: 200px;
 
-    .logo {
+	.logo {
+		height: fit-content;
+		margin: 0 auto;
+		background: $mainColor;
+		border-radius: 20em;
+		padding: 0 40px;
+		display: flex;
+		align-items: center;
+		animation: appear 5s ease;
 
-        height: fit-content;
-        margin: 0 auto;
-        background: $mainColor;
-        border-radius: 20em;
-        padding: 0 40px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        animation: appear 5s ease;
-        
-        &:hover {
-            .logo-cube {
-                animation: rotate 1s ease-in-out infinite alternate;
-            }
-        }
-        .logo-text {
-            font-size: 96px;
-            font-family: 'Allerta Stencil', sans-serif;
-            color: white;
-        }
+		&:hover {
+			.logo-cube {
+				animation: rotate 1s ease-in-out infinite alternate;
+			}
+		}
+		.logo-text {
+			font-size: 96px;
+			font-family: "Allerta Stencil", sans-serif;
+			color: white;
+		}
 
-        .logo-cube {
-            margin-left: 20px;
-            height: 80px;
-            width: 60px;
-            border-radius: 21px;
-            background-color: $accentColor;
-
-        }
-    }
+		.logo-cube {
+			margin-left: 20px;
+			height: 80px;
+			width: 60px;
+			border-radius: 21px;
+			background-color: $accentColor;
+		}
+	}
 }
