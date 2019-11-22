@@ -1,87 +1,96 @@
 @import "src/assets/styles/variables.scss";
 
 .container {
-  .landing {
-    height: 100vh;
-    padding: 0 180px;
-    header {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      height: 200px;
+	.landing {
+		height: 100vh;
+		padding: 0 180px;
+		header {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			height: 200px;
 
-      .logo {
-        @keyframes rotating {
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-        height: fit-content;
-        margin: 0 auto;
-        background: $mainColor;
-        border-radius: 20em;
-        padding: 0 40px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
+			.logo {
+				@keyframes rotating {
+					100% {
+						transform: rotate(360deg);
+					}
+				}
+				height: fit-content;
+				margin: 0 auto;
+				background: $mainColor;
+				border-radius: 20em;
+				padding: 0 40px;
+				display: flex;
+				align-items: center;
+				cursor: grab;
+				outline: none;
 
-        &:hover {
-          border: 3pt solid $grayColor;
-          .logo-cube {
-            animation: rotating 1s ease-in-out infinite alternate;
-          }
-        }
-        .logo-text {
-          font-size: 96px;
-          font-family: "Allerta Stencil", sans-serif;
-          color: white;
-        }
+				&:hover {
+					border: 3pt solid $grayColor;
+					.logo-cube {
+						animation: rotating 1s ease-in-out infinite alternate;
+					}
+				}
+				.logo-text {
+					font-size: 76px;
+					font-family: "Allerta Stencil", sans-serif;
+					color: white;
+				}
 
-        .logo-cube {
-          margin-left: 20px;
-          height: 80px;
-          width: 60px;
-          border-radius: 21px;
-          background-color: $accentColor;
-        }
-      }
-    }
+				.logo-cube {
+					margin-left: 20px;
+					height: 70px;
+					width: 50px;
+					border-radius: 21px;
+					background-color: $accentColor;
+				}
+			}
+		}
 
-    .landing-section {
-      border-radius: 50px;
-      margin: 0 auto;
-      height: 70vh;
-      background-color: $mainColor;
-      display: flex;
+		.landing-section {
+			border-radius: 50px;
+			margin: 0 auto;
+			height: 70vh;
+			background-color: $mainColor;
 
-      .cta-container {
-      }
+			.cta-container {
+				float: left;
+				width: 50%;
 
-      .image-container {
-        img {
-          height: 100%;
-          width: 100%;
-        }
-      }
-    }
-  }
+				.cta-info {
+					font-size: 23pt;
+				}
+			}
 
-  .footer {
-    height: 95vh;
-    background-color: $mainColor;
+			.image-container {
+				display: inline;
+				width: 50%;
 
-    .rounding {
-      height: 5vh;
-      width: 100%;
-      background-color: white;
-      border-bottom-left-radius: 70px;
-      border-bottom-right-radius: 70px;
-    }
+				img {
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
 
-    .foot-content {
-      height: 100%;
-      width: 100%;
-      background-color: $mainColor;
-    }
-  }
+	.footer {
+		height: 95vh;
+		background-color: $mainColor;
+
+		.rounding {
+			height: 5vh;
+			width: 100%;
+			background-color: white;
+			border-bottom-left-radius: 70px;
+			border-bottom-right-radius: 70px;
+		}
+
+		.foot-content {
+			height: 100%;
+			width: 100%;
+			background-color: $mainColor;
+		}
+	}
 }

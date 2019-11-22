@@ -34,6 +34,8 @@ header {
 		display: flex;
 		align-items: center;
 		animation: appear 5s ease;
+		cursor: grab;
+		outline: none;
 
 		&:hover {
 			.logo-cube {
@@ -41,15 +43,15 @@ header {
 			}
 		}
 		.logo-text {
-			font-size: 96px;
+			font-size: 76px;
 			font-family: "Allerta Stencil", sans-serif;
 			color: white;
 		}
 
 		.logo-cube {
 			margin-left: 20px;
-			height: 80px;
-			width: 60px;
+			height: 70px;
+			width: 50px;
 			border-radius: 21px;
 			background-color: $accentColor;
 		}
