@@ -157,10 +157,24 @@
 			border-bottom-right-radius: 70px;
 		}
 
-		.foot-content {
+		.footer-content {
 			height: 100%;
-			width: 100%;
 			background-color: $mainColor;
+
+			.left-container {
+			}
+
+			.divider {
+				width: 20px;
+				height: 500px;
+				background-color: green;
+				margin: 0 auto;
+				padding: 100px;
+				width: 1000px;
+			}
+
+			.right-container {
+			}
 		}
 	}
 }
