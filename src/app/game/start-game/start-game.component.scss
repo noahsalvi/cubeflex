@@ -1,21 +1,53 @@
 @import "src/assets/styles/variables.scss";
 
 .container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	font-family: "Poppins", sans-serif;
+	color: white;
 }
 
 .titel {
-  height: auto;
-  #level {
-    color: white;
-    font-size: 96px;
-  }
+	height: auto;
+	h1 {
+		text-align: center;
+
+		font-size: 96px;
+	}
 }
 
 .seconds {
-  height: auto;
-  font-family: "Poppins", sans-serif;
+	height: auto;
+	h2 {
+		text-align: center;
+
+		font-size: 80px;
+	}
+}
+
+.button {
+	height: auto;
+	.buttonRounded {
+		margin: 0 auto;
+		background-color: $accentColor;
+		height: 115px;
+		width: 392px;
+		border-radius: 35px;
+		&:hover {
+			transform: scale(1.03);
+			-webkit-animation: shadow-drop-center 0.4s
+				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+			animation: shadow-drop-center 0.4s
+				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+		}
+		cursor: pointer;
+		p {
+			text-align: center;
+			line-height: 115px;
+			font-weight: bold;
+			font-size: 48px;
+			text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		}
+	}
 }
