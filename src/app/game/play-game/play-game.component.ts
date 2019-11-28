@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { GameService } from "src/app/game.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-play-game",
@@ -8,18 +9,25 @@ import { GameService } from "src/app/game.service";
 })
 export class PlayGameComponent implements OnInit, AfterViewInit {
 	rand: number;
+	level: number;
 	seconds: number;
 	secondsRounded: number;
-	interval: NodeJS.Timer;
+	interval;
 
-	constructor(private gameService: GameService) {}
+	constructor(private gameService: GameService, private router: Router) {}
 
 	ngOnInit() {
+		this.setup();
+	}
+
+	setup() {
 		for (let i = 1; i <= 12; i++) {
 			document
 				.getElementById("c-" + i)
 				.addEventListener("click", () => this.checkCube("c-" + i));
 		}
+		this.level = this.gameService.level;
+		this.secondsRounded = this.gameService.seconds;
 	}
 
 	ngAfterViewInit() {
@@ -33,16 +41,15 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 	}
 
 	chooseCube() {
-		let randNr = Math.floor(Math.random() * 12) + 1;
-		this.rand = 1;
+		this.rand = Math.floor(Math.random() * 12) + 1;
 	}
 
 	setActive() {
-		document.getElementById("c-" + this.rand).classList.add(".active");
+		document.getElementById("c-" + this.rand).classList.add("active");
 	}
 
 	removeActive() {
-		document.getElementById("c-" + this.rand).classList.remove(".active");
+		document.getElementById("c-" + this.rand).classList.remove("active");
 	}
 
 	checkCube(id: String) {
@@ -54,8 +61,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		} else {
 			this.gameService.gameover = true;
 			clearInterval(this.interval);
-
-			console.log("Interval gekilled");
+			this.router.navigate(["/game/end"]);
 		}
 	}
 
