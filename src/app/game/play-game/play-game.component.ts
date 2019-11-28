@@ -8,13 +8,14 @@ import { GameService } from "src/app/game.service";
 })
 export class PlayGameComponent implements OnInit, AfterViewInit {
 	rand: number;
-	interval;
-	timeLeft: number;
+	seconds: number;
+	secondsRounded: number;
+	interval: NodeJS.Timer;
 
 	constructor(private gameService: GameService) {}
 
 	ngOnInit() {
-		for (let i = 1; i <= 2; i++) {
+		for (let i = 1; i <= 12; i++) {
 			document
 				.getElementById("c-" + i)
 				.addEventListener("click", () => this.checkCube("c-" + i));
@@ -22,37 +23,52 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
+		this.game();
+	}
+
+	game() {
 		this.chooseCube();
-		this.setActiv();
-		this.startCountdown().then(() => console.log("fertig"));
+		this.setActive();
+		this.startCountdown();
 	}
 
 	chooseCube() {
 		let randNr = Math.floor(Math.random() * 12) + 1;
-		this.rand = randNr;
+		this.rand = 1;
 	}
 
-	setActiv() {
-		document.getElementById("c-" + this.rand).classList.add(".activ");
+	setActive() {
+		document.getElementById("c-" + this.rand).classList.add(".active");
+	}
+
+	removeActive() {
+		document.getElementById("c-" + this.rand).classList.remove(".active");
 	}
 
 	checkCube(id: String) {
 		if (id == "c-" + this.rand) {
-			this.countdown = 0;
+			clearInterval(this.interval);
+			this.gameService.seconds = this.gameService.seconds - 0.1;
+			this.removeActive();
+			this.game();
 		} else {
 			this.gameService.gameover = true;
+			clearInterval(this.interval);
+
+			console.log("Interval gekilled");
 		}
 	}
 
 	async startCountdown() {
-		this.timeLeft = 2;
+		this.seconds = this.gameService.seconds;
 		this.interval = setInterval(() => {
-			if (this.timeLeft > 0) {
-				this.timeLeft--;
+			if (this.seconds > 0) {
+				this.seconds = this.seconds - 0.1;
+				this.secondsRounded = Math.round(this.seconds * 100) / 100;
 			} else {
-				this.timeLeft = 60;
+				clearInterval(this.interval);
 			}
-			console.log(this.timeLeft);
-		}, 1000);
+			console.log(this.seconds);
+		}, 100);
 	}
 }
