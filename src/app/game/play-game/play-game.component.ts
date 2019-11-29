@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { GameService } from "src/app/game.service";
 import { Router } from "@angular/router";
+import { ThrowStmt } from "@angular/compiler";
 
 @Component({
 	selector: "app-play-game",
@@ -56,6 +57,8 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		if (id == "c-" + this.rand) {
 			clearInterval(this.interval);
 			this.gameService.seconds = this.gameService.seconds - 0.1;
+			this.gameService.level++;
+			this.level = this.gameService.level;
 			this.removeActive();
 			this.game();
 		} else {
@@ -65,7 +68,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		}
 	}
 
-	async startCountdown() {
+	startCountdown() {
 		this.seconds = this.gameService.seconds;
 		this.interval = setInterval(() => {
 			if (this.seconds > 0) {
@@ -73,6 +76,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 				this.secondsRounded = Math.round(this.seconds * 100) / 100;
 			} else {
 				clearInterval(this.interval);
+				this.router.navigate(["/game/end"]);
 			}
 			console.log(this.seconds);
 		}, 100);
