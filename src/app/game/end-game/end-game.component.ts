@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { GameService } from "src/app/game.service";
 
 @Component({
 	selector: "app-end-game",
@@ -6,10 +7,14 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./end-game.component.scss"]
 })
 export class EndGameComponent implements OnInit {
-	time: number;
+	seconds: number;
+	level: number;
 
-	constructor() {
-		this.time = 5;
+	constructor(private gameService: GameService) {
+		this.seconds = Math.round(this.gameService.seconds * 100) / 100;
+		this.level = gameService.level;
+
+		this.gameService.reset();
 	}
 
 	ngOnInit() {}

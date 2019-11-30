@@ -6,11 +6,14 @@ import { Injectable } from "@angular/core";
 export class GameService {
 	seconds: number;
 	level: number;
-	gameover: boolean;
+	gameover: boolean = false;
 
 	constructor() {
-		this.seconds = 3;
+		this.reset();
+	}
+
+	reset(): void {
 		this.level = 1;
-		this.gameover = false;
+		this.seconds = 3;
 	}
 }

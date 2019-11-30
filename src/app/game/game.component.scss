@@ -50,8 +50,12 @@ header {
 			height: 70px;
 			width: 50px;
 			border-radius: 21px;
-			background-color: $accentColor;
 			transition: transform 1s ease-out;
+			background-color: $accentColor;
+		}
+
+		.logo-cube.orange-color {
+			background-color: $accentColor2;
 		}
 
 		&:hover {

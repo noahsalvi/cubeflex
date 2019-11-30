@@ -1,9 +1,15 @@
 <div class="container">
-  <h1>Z langsam Hoho</h1>
-  <h3>Deine Bestzeit beträgt {{ time }}s</h3>
-  <span class="button">
-    <span class="button-text">
-      Restart
-    </span>
-  </span>
+	<div class="titel">
+		<h1>You reached Level {{ level }}</h1>
+	</div>
+
+	<div class="seconds">
+		<h2>{{ seconds }}s</h2>
+	</div>
+
+	<div class="button">
+		<div class="buttonRounded" [routerLink]="['play']">
+			<p>Restart</p>
+		</div>
+	</div>
 </div>
