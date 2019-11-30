@@ -81,7 +81,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 			} else {
 				clearInterval(this.interval);
 				this.gameService.gameover = true;
-				// this.router.navigate(["/game/end"]);
+				this.router.navigate(["/game/end"]);
 			}
 			console.log(this.seconds);
 		}, 100);
