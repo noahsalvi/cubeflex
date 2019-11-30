@@ -111,7 +111,7 @@
 					margin-bottom: 40px;
 					background-color: $accentColor;
 					padding: 15px 80px;
-					border-radius: 11pt;
+					border-radius: 11px;
 					transition: transform 0.4s;
 					&:hover {
 						transform: scale(1.03);
@@ -160,20 +160,28 @@
 		.footer-content {
 			height: 100%;
 			background-color: $mainColor;
+			display: flex;
+			justify-content: space-evenly;
 
-			.left-container {
+			img {
+				border: 10px solid $accentColor;
+				border-radius: 250px;
+				margin: 0;
+				padding: 0;
 			}
 
 			.divider {
-				width: 20px;
-				height: 500px;
-				background-color: green;
-				margin: 0 auto;
-				padding: 100px;
-				width: 1000px;
+				height: 90%;
+				align-self: center;
+				border: 8px solid $grayColor;
+				border-radius: 10px;
 			}
 
-			.right-container {
+			.personal-container {
+				padding-top: 80px;
+				text-align: center;
+				display: flex;
+				flex-direction: column;
 			}
 		}
 	}
