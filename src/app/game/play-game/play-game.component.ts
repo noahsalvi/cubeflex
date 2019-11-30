@@ -42,7 +42,11 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 	}
 
 	chooseCube() {
-		this.rand = Math.floor(Math.random() * 12) + 1;
+		let temp;
+		do {
+			temp = Math.floor(Math.random() * 12) + 1;
+		} while (temp == this.rand);
+		this.rand = temp;
 	}
 
 	setActive() {
@@ -77,7 +81,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 			} else {
 				clearInterval(this.interval);
 				this.gameService.gameover = true;
-				this.router.navigate(["/game/end"]);
+				// this.router.navigate(["/game/end"]);
 			}
 			console.log(this.seconds);
 		}, 100);

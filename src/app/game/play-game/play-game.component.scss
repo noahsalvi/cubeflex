@@ -1,55 +1,76 @@
+@import "src/assets/styles/variables.scss";
 .container {
 	margin: 0 auto;
-	width: 1200px;
-
 	display: flex;
+	justify-content: center;
 
 	.cubes {
-		height: 100%;
+		margin-right: 50px;
 
 		.cube-row {
 			display: flex;
-			margin-bottom: 15px;
+			padding-bottom: 1.7vh;
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+
 			.cube {
-				width: 170px;
-				height: 230px;
-				border-radius: 20px;
+				height: 23vh;
+				width: 16.2vh;
+				border-radius: 2.2vh;
 				background-color: #eeeeee;
-				border: 8px solid #8e8e8e;
-				margin-right: 15px;
+				border: 1.1vh solid $grayColor;
+
+				margin-right: 1.7vh;
+
 				cursor: pointer;
+
+				&:last-child {
+					//remove margin from last element on row
+					margin-right: 0;
+				}
+
 				&:hover {
 					transform: scale(1.03);
 				}
 			}
 
 			.active {
-				background: #78ffae;
+				@keyframes cardActive {
+					50% {
+						transform: scale(1.04);
+					}
+
+					to {
+						transform: scale(1);
+					}
+				}
+
+				animation: cardActive 0.2s;
+				background: $accentColor;
 
 				&:hover {
-					background-color: #31ff83;
+					background-color: #57ff9a;
 				}
 			}
 		}
 	}
 
 	.info {
-		margin-left: auto;
-
-		height: auto;
 		text-align: center;
 		color: white;
-
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		#level {
 			font-size: 60px;
-			width: 100%;
+			min-width: 245px;
 		}
 
 		#seconds {
-			font-size: 60px;
+			font-size: 50px;
+			color: rgb(223, 223, 223);
 			width: 100%;
 		}
 	}
