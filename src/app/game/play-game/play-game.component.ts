@@ -58,7 +58,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 	}
 
 	checkCube(id: string) {
-		if (!this.gameService.gameover) {
+		if (!this.gameService.isGameover) {
 			if (id == "c-" + this.rand) {
 				clearInterval(this.interval);
 				this.gameService.seconds = this.gameService.seconds - 0.1;
