@@ -34,7 +34,7 @@ header {
 		padding: 0 40px;
 		display: flex;
 		align-items: center;
-		animation: appear 1s ease-in;
+		animation: appear 0.5s;
 		cursor: pointer;
 		outline: none;
 		transition: transform 0.5s;
@@ -46,7 +46,7 @@ header {
 			user-select: none;
 		}
 
-		.logo-cube {
+		#logo-cube {
 			margin-left: 20px;
 			height: 70px;
 			width: 50px;
@@ -55,7 +55,8 @@ header {
 			background-color: $accentColor;
 		}
 
-		.logo-cube.orange-color {
+		#logo-cube.orange-color {
+			transition: all 0.5s;
 			background-color: $accentColor2;
 		}
 

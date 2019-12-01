@@ -9,6 +9,11 @@
 	top: 50%;
 }
 
+.reason {
+	color: $accentColor2;
+	font-size: 70px;
+}
+
 .titel {
 	height: auto;
 	h1 {
@@ -31,7 +36,7 @@
 	height: auto;
 	.buttonRounded {
 		margin: 0 auto;
-		background-color: $accentColor;
+		background-color: $accentColor2;
 		width: 280px;
 		height: 82px;
 		border-radius: 26px;

@@ -54,6 +54,18 @@
 					background-color: #57ff9a;
 				}
 			}
+
+			.wrong {
+				background: #fd7f7f;
+				border-color: #ff5858;
+				@keyframes pulsing {
+					50% {
+						transform: scale(1.06);
+					}
+				}
+
+				animation: pulsing 1s infinite ease-out;
+			}
 		}
 	}
 
@@ -73,6 +85,19 @@
 			font-size: 50px;
 			color: rgb(223, 223, 223);
 			width: 100%;
+		}
+
+		#seconds.expired {
+			color: #ff5858;
+			transform: scale(1.1);
+			@keyframes blinking {
+				50% {
+					// transform: scale(1.06);
+					opacity: 0;
+				}
+			}
+
+			animation: blinking 0.8s infinite;
 		}
 	}
 }

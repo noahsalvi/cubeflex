@@ -57,18 +57,21 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		document.getElementById("c-" + this.rand).classList.remove("active");
 	}
 
-	checkCube(id: String) {
-		if (id == "c-" + this.rand) {
-			clearInterval(this.interval);
-			this.gameService.seconds = this.gameService.seconds - 0.1;
-			this.gameService.level++;
-			this.level = this.gameService.level;
-			this.removeActive();
-			this.game();
-		} else {
-			this.gameService.gameover = true;
-			clearInterval(this.interval);
-			this.router.navigate(["/game/end"]);
+	checkCube(id: string) {
+		if (!this.gameService.gameover) {
+			if (id == "c-" + this.rand) {
+				clearInterval(this.interval);
+				this.gameService.seconds = this.gameService.seconds - 0.1;
+				this.gameService.level++;
+				this.level = this.gameService.level;
+				this.removeActive();
+				this.game();
+			} else {
+				clearInterval(this.interval);
+				this.gameService.gameover("cube");
+				document.getElementById(id).classList.add("wrong");
+				setTimeout(() => this.router.navigate(["/game/end"]), 2000);
+			}
 		}
 	}
 
@@ -80,10 +83,11 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 				this.secondsRounded = Math.round(this.seconds * 100) / 100;
 			} else {
 				clearInterval(this.interval);
-				this.gameService.gameover = true;
-				this.router.navigate(["/game/end"]);
+				this.gameService.gameover("cube");
+				this.removeActive();
+				document.getElementById("seconds").classList.add("expired");
+				setTimeout(() => this.router.navigate(["/game/end"]), 2500);
 			}
-			console.log(this.seconds);
 		}, 100);
 	}
 }
