@@ -111,6 +111,5 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 	ngOnDestroy() {
 		clearTimeout(this.redirectTimeout);
 		clearInterval(this.interval);
-		this.gameService.reset();
 	}
 }
