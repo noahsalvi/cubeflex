@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { GameService } from "src/app/game.service";
 import { Router } from "@angular/router";
+import { Howl } from "howler";
 
 @Component({
 	selector: "app-end-game",
@@ -11,6 +12,7 @@ export class EndGameComponent implements OnInit, OnDestroy {
 	seconds: number;
 	level: number;
 	reason: string;
+	endHowl;
 
 	constructor(private gameService: GameService, private router: Router) {
 		if (!gameService.gameover) {
@@ -28,9 +30,13 @@ export class EndGameComponent implements OnInit, OnDestroy {
 		}
 
 		this.gameService.reset();
+
+		this.endHowl = new Howl({ src: ["assets/sounds/gameover.wav"] });
 	}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.endHowl.play();
+	}
 
 	ngOnDestroy() {
 		document.getElementById("logo-cube").classList.remove("orange-color");

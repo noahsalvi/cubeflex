@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { GameService } from "src/app/game.service";
 import { Router } from "@angular/router";
 import { ThrowStmt } from "@angular/compiler";
+import { Howl, Howler } from "howler";
 
 @Component({
 	selector: "app-play-game",
@@ -14,6 +15,9 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 	seconds: number;
 	secondsRounded: number;
 	interval;
+
+	correctHowl;
+	wrongHowl;
 
 	constructor(private gameService: GameService, private router: Router) {}
 
@@ -29,6 +33,9 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		}
 		this.level = this.gameService.level;
 		this.secondsRounded = this.gameService.seconds;
+
+		this.correctHowl = new Howl({ src: ["assets/sounds/correct.wav"] });
+		this.wrongHowl = new Howl({ src: ["assets/sounds/wrong.mp3"] });
 	}
 
 	ngAfterViewInit() {
@@ -64,12 +71,14 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 				this.gameService.seconds = this.gameService.seconds - 0.1;
 				this.gameService.level++;
 				this.level = this.gameService.level;
+				this.correctHowl.play();
 				this.removeActive();
 				this.game();
 			} else {
 				clearInterval(this.interval);
 				this.gameService.gameover("cube");
 				document.getElementById(id).classList.add("wrong");
+				this.wrongHowl.play();
 				setTimeout(() => this.router.navigate(["/game/end"]), 2000);
 			}
 		}
@@ -77,13 +86,14 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 
 	startCountdown() {
 		this.seconds = this.gameService.seconds;
+
 		this.interval = setInterval(() => {
 			if (this.seconds > 0) {
-				this.seconds = this.seconds - 0.1;
+				this.seconds -= 0.1;
 				this.secondsRounded = Math.round(this.seconds * 100) / 100;
 			} else {
 				clearInterval(this.interval);
-				this.gameService.gameover("cube");
+				this.gameService.gameover("time");
 				this.removeActive();
 				document.getElementById("seconds").classList.add("expired");
 				setTimeout(() => this.router.navigate(["/game/end"]), 2500);

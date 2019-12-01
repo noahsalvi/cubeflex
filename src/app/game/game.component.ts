@@ -9,11 +9,7 @@ import { PlayGameComponent } from "./play-game/play-game.component";
 	styleUrls: ["./game.component.scss"]
 })
 export class GameComponent implements OnInit {
-	isGameover: any;
-	test;
-	constructor(gameSerivce: GameService) {
-		this.isGameover = of(gameSerivce.isGameover);
-	}
+	constructor(gameSerivce: GameService) {}
 
 	ngOnInit() {}
 }
