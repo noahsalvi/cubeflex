@@ -1,7 +1,7 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
 import { GameService } from "src/app/game.service";
 import { Router } from "@angular/router";
-import { ThrowStmt } from "@angular/compiler";
+import { ThrowStmt, templateJitUrl } from "@angular/compiler";
 import { Howl, Howler } from "howler";
 
 @Component({
@@ -9,12 +9,13 @@ import { Howl, Howler } from "howler";
 	templateUrl: "./play-game.component.html",
 	styleUrls: ["./play-game.component.scss"]
 })
-export class PlayGameComponent implements OnInit, AfterViewInit {
+export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 	rand: number;
 	level: number;
 	seconds: number;
 	secondsRounded: number;
 	interval;
+	redirectTimeout;
 
 	correctHowl;
 	wrongHowl;
@@ -79,7 +80,10 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 				this.gameService.gameover("cube");
 				document.getElementById(id).classList.add("wrong");
 				this.wrongHowl.play();
-				setTimeout(() => this.router.navigate(["/game/end"]), 2000);
+				this.redirectTimeout = setTimeout(
+					() => this.router.navigate(["/game/end"]),
+					2000
+				);
 			}
 		}
 	}
@@ -96,8 +100,17 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 				this.gameService.gameover("time");
 				this.removeActive();
 				document.getElementById("seconds").classList.add("expired");
-				setTimeout(() => this.router.navigate(["/game/end"]), 2500);
+				this.redirectTimeout = setTimeout(
+					() => this.router.navigate(["/game/end"]),
+					2500
+				);
 			}
 		}, 100);
+	}
+
+	ngOnDestroy() {
+		clearTimeout(this.redirectTimeout);
+		clearInterval(this.interval);
+		this.gameService.reset();
 	}
 }
