@@ -1,19 +1,24 @@
-import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit, OnDestroy } from "@angular/core";
 import { GameService } from "src/app/game.service";
 import { Router } from "@angular/router";
-import { ThrowStmt } from "@angular/compiler";
+import { ThrowStmt, templateJitUrl } from "@angular/compiler";
+import { Howl, Howler } from "howler";
 
 @Component({
 	selector: "app-play-game",
 	templateUrl: "./play-game.component.html",
 	styleUrls: ["./play-game.component.scss"]
 })
-export class PlayGameComponent implements OnInit, AfterViewInit {
+export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 	rand: number;
 	level: number;
 	seconds: number;
 	secondsRounded: number;
 	interval;
+	redirectTimeout;
+
+	correctHowl;
+	wrongHowl;
 
 	constructor(private gameService: GameService, private router: Router) {}
 
@@ -29,6 +34,9 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		}
 		this.level = this.gameService.level;
 		this.secondsRounded = this.gameService.seconds;
+
+		this.correctHowl = new Howl({ src: ["assets/sounds/correct.wav"] });
+		this.wrongHowl = new Howl({ src: ["assets/sounds/wrong.mp3"] });
 	}
 
 	ngAfterViewInit() {
@@ -42,7 +50,11 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 	}
 
 	chooseCube() {
-		this.rand = Math.floor(Math.random() * 12) + 1;
+		let temp;
+		do {
+			temp = Math.floor(Math.random() * 12) + 1;
+		} while (temp == this.rand);
+		this.rand = temp;
 	}
 
 	setActive() {
@@ -53,33 +65,51 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
 		document.getElementById("c-" + this.rand).classList.remove("active");
 	}
 
-	checkCube(id: String) {
-		if (id == "c-" + this.rand) {
-			clearInterval(this.interval);
-			this.gameService.seconds = this.gameService.seconds - 0.1;
-			this.gameService.level++;
-			this.level = this.gameService.level;
-			this.removeActive();
-			this.game();
-		} else {
-			this.gameService.gameover = true;
-			clearInterval(this.interval);
-			this.router.navigate(["/game/end"]);
+	checkCube(id: string) {
+		if (!this.gameService.isGameover) {
+			if (id == "c-" + this.rand) {
+				clearInterval(this.interval);
+				this.gameService.seconds = this.gameService.seconds - 0.1;
+				this.gameService.level++;
+				this.level = this.gameService.level;
+				this.correctHowl.play();
+				this.removeActive();
+				this.game();
+			} else {
+				clearInterval(this.interval);
+				this.gameService.gameover("cube");
+				document.getElementById(id).classList.add("wrong");
+				this.wrongHowl.play();
+				this.redirectTimeout = setTimeout(
+					() => this.router.navigate(["/game/end"]),
+					2000
+				);
+			}
 		}
 	}
 
 	startCountdown() {
 		this.seconds = this.gameService.seconds;
+
 		this.interval = setInterval(() => {
 			if (this.seconds > 0) {
-				this.seconds = this.seconds - 0.1;
+				this.seconds -= 0.1;
 				this.secondsRounded = Math.round(this.seconds * 100) / 100;
 			} else {
 				clearInterval(this.interval);
-				this.gameService.gameover = true;
-				this.router.navigate(["/game/end"]);
+				this.gameService.gameover("time");
+				this.removeActive();
+				document.getElementById("seconds").classList.add("expired");
+				this.redirectTimeout = setTimeout(
+					() => this.router.navigate(["/game/end"]),
+					2500
+				);
 			}
-			console.log(this.seconds);
 		}, 100);
+	}
+
+	ngOnDestroy() {
+		clearTimeout(this.redirectTimeout);
+		clearInterval(this.interval);
 	}
 }

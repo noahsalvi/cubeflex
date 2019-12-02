@@ -1,56 +1,132 @@
 @import "src/assets/styles/variables.scss";
 
-.container {
-	font-family: "Poppins", sans-serif;
-	color: white;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	top: 50%;
-}
-
-.titel {
-	height: auto;
-	h1 {
-		text-align: center;
-		font-size: 60px;
-	}
-}
-
-.seconds {
-	height: auto;
-	h2 {
-		text-align: center;
-		font-size: 60px;
-		color: #eeeeee;
-	}
-}
-
-.button {
-	margin-top: 70px; //more space between text and button
-	height: auto;
-	.buttonRounded {
+@media (orientation: landscape) {
+	.container {
+		font-family: "Poppins", sans-serif;
+		color: white;
+		// position: absolute;
+		// left: 50%;
+		// transform: translate(-50%, -50%);
+		// top: 50%;
 		margin: 0 auto;
-		background-color: $accentColor;
-		width: 280px;
-		height: 82px;
-		border-radius: 26px;
-		outline: none; //make box not selectable
-		&:hover {
-			transform: scale(1.03);
-			-webkit-animation: shadow-drop-center 0.4s
-				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-			animation: shadow-drop-center 0.4s
-				cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-		}
-		cursor: pointer;
-		p {
+		width: fit-content;
+	}
+
+	.reason {
+		color: $accentColor2;
+		font-size: 70px;
+		text-align: center;
+	}
+
+	.titel {
+		height: auto;
+		h1 {
 			text-align: center;
-			font-weight: bold;
+			font-size: 60px;
+		}
+	}
+
+	.seconds {
+		height: auto;
+		h2 {
+			font-size: 50px;
+			color: #dfdfdf;
+			text-align: center;
+		}
+	}
+
+	.button {
+		margin-top: 70px; //more space between text and button
+		height: auto;
+		.buttonRounded {
+			margin: 0 auto;
+			background-color: $accentColor2;
+			width: 280px;
+			height: 82px;
+			border-radius: 26px;
+			outline: none; //make box not selectable
+			&:hover {
+				transform: scale(1.03);
+				-webkit-animation: shadow-drop-center 0.4s
+					cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+				animation: shadow-drop-center 0.4s
+					cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+			}
+			cursor: pointer;
+			p {
+				text-align: center;
+				font-weight: bold;
+				font-size: 35px;
+				line-height: 82px;
+				text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+				user-select: none; //make text not selectable
+			}
+		}
+	}
+}
+
+@media (orientation: portrait) {
+	.container {
+		font-family: "Poppins", sans-serif;
+		color: white;
+		margin-top: 10%;
+	}
+
+	.reason {
+		color: $accentColor2;
+		font-size: 45px;
+		text-align: center;
+	}
+
+	.titel {
+		height: auto;
+
+		h1 {
+			text-align: center;
 			font-size: 35px;
-			line-height: 82px;
-			text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-			user-select: none; //make text not selectable
+		}
+	}
+
+	.seconds {
+		height: auto;
+		text-align: center;
+
+		h2 {
+			text-align: center;
+			font-size: 32px;
+			color: rgb(223, 223, 223);
+		}
+	}
+
+	.button {
+		position: absolute;
+		left: 50%;
+		bottom: 10%;
+		transform: translate(-50%);
+		.buttonRounded {
+			margin: 0 auto;
+			background-color: $accentColor2;
+			width: 220px;
+			height: 70px;
+			border-radius: 26px;
+			outline: none; //make box not selectable
+			&:hover,
+			&:active {
+				transform: scale(1.03);
+				-webkit-animation: shadow-drop-center 0.4s
+					cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+				animation: shadow-drop-center 0.4s
+					cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+			}
+			cursor: pointer;
+			p {
+				text-align: center;
+				font-weight: bold;
+				font-size: 27px;
+				line-height: 70px;
+				text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+				user-select: none; //make text not selectable
+			}
 		}
 	}
 }

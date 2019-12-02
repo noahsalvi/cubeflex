@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { GameService } from "../game.service";
+//import { Md5 } from "@angular/ts-md5/dist/md5";
 
 @Component({
 	selector: "app-landing-page",
@@ -6,7 +8,9 @@ import { Component, OnInit } from "@angular/core";
 	styleUrls: ["./landing-page.component.scss"]
 })
 export class LandingPageComponent implements OnInit {
-	constructor() {}
+	constructor(gameService: GameService) {
+		gameService.reset();
+	}
 
 	ngOnInit() {}
 }
