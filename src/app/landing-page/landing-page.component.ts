@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Md5 } from "@angular/ts-md5/dist/md5";
 
 @Component({
 	selector: "app-landing-page",
