@@ -100,10 +100,10 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 				this.gameService.gameover("time");
 				this.removeActive();
 				document.getElementById("seconds").classList.add("expired");
-				this.redirectTimeout = setTimeout(
-					() => this.router.navigate(["/game/end"]),
-					2500
-				);
+				// this.redirectTimeout = setTimeout(
+				// 	() => this.router.navigate(["/game/end"]),
+				// 	2500
+				// );
 			}
 		}, 100);
 	}

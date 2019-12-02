@@ -20,52 +20,107 @@
 	height: 100vh;
 	overflow: hidden;
 }
-header {
-	width: 100vw;
-	display: flex;
-	align-items: center;
-	height: 200px;
 
-	.logo {
-		height: fit-content;
-		margin: 0 auto;
-		background: $mainColor;
-		border-radius: 20em;
-		padding: 0 40px;
+@media (orientation: landscape) {
+	header {
+		width: 100vw;
 		display: flex;
 		align-items: center;
-		animation: appear 0.5s;
-		cursor: pointer;
-		outline: none;
-		transition: transform 0.5s;
+		height: 200px;
 
-		.logo-text {
-			font-size: 76px;
-			font-family: "Allerta Stencil", sans-serif;
-			color: white;
-			user-select: none;
+		.logo {
+			height: fit-content;
+			margin: 0 auto;
+			background: $mainColor;
+			border-radius: 20em;
+			padding: 0 40px;
+			display: flex;
+			align-items: center;
+			animation: appear 0.5s;
+			cursor: pointer;
+			outline: none;
+			transition: transform 0.5s;
+
+			.logo-text {
+				font-size: 76px;
+				font-family: "Allerta Stencil", sans-serif;
+				color: white;
+				user-select: none;
+			}
+
+			#logo-cube {
+				margin-left: 20px;
+				height: 70px;
+				width: 50px;
+				border-radius: 21px;
+				transition: transform 1s ease-out;
+				background-color: $accentColor;
+			}
+
+			#logo-cube.orange-color {
+				transition: all 0.5s;
+				background-color: $accentColor2;
+			}
+
+			&:hover {
+				transform: scale(1.03);
+				.logo-cube {
+					//animation: rotate 1s ease-in-out infinite alternate;
+					transform: rotate(360deg);
+					transition: transform 2s 0.2s;
+				}
+			}
 		}
+	}
+}
 
-		#logo-cube {
-			margin-left: 20px;
-			height: 70px;
-			width: 50px;
-			border-radius: 21px;
-			transition: transform 1s ease-out;
-			background-color: $accentColor;
-		}
+@media (orientation: portrait) {
+	header {
+		width: 100vw;
+		display: flex;
+		align-items: center;
+		margin-top: 10%;
 
-		#logo-cube.orange-color {
-			transition: all 0.5s;
-			background-color: $accentColor2;
-		}
+		.logo {
+			height: fit-content;
+			margin: 0 auto;
+			background: $mainColor;
+			border-radius: 20em;
+			display: flex;
+			align-items: center;
+			animation: appear 0.5s;
+			cursor: pointer;
+			outline: none;
+			transition: transform 0.5s;
+			text-align: center;
+			.logo-text {
+				font-size: 3.8em;
+				font-family: "Allerta Stencil", sans-serif;
+				color: white;
+				user-select: none;
+			}
 
-		&:hover {
-			transform: scale(1.03);
-			.logo-cube {
-				//animation: rotate 1s ease-in-out infinite alternate;
-				transform: rotate(360deg);
-				transition: transform 2s 0.2s;
+			#logo-cube {
+				margin-left: 10px;
+				height: 56px;
+				width: 40px;
+				border-radius: 18px;
+				transition: transform 1s ease-out;
+				background-color: $accentColor;
+			}
+
+			#logo-cube.orange-color {
+				transition: all 0.5s;
+				background-color: $accentColor2;
+			}
+
+			&:hover {
+				transform: scale(1.03);
+				.logo-cube {
+					//animation: rotate 1s ease-in-out infinite alternate;
+					transform: rotate(360deg);
+					transition: transform 2s 0.2s;
+				}
 			}
 		}
 	}
