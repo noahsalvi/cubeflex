@@ -33,7 +33,7 @@
 	}
 }
 
-@media (orientation: landscape) {
+@media (min-width: 631px) {
 	.container {
 		background-color: $mainColor;
 		.landing {
@@ -258,7 +258,7 @@
 	}
 }
 
-@media (orientation: portrait) {
+@media (max-width: 631px) {
 	.container {
 		background-color: $mainColor;
 		.landing {
@@ -268,7 +268,8 @@
 				width: 100vw;
 				display: flex;
 				align-items: center;
-				height: 200px;
+				// height: 200px;
+				padding-top: 10%;
 
 				.logo {
 					height: fit-content;
