@@ -68,7 +68,9 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 	updateSeconds() {
 		let subtrahend = 0.1;
 
-		if (this.gameService.seconds <= 0.6) {
+		if (this.gameService.seconds <= 0.2) {
+			subtrahend = 0.01;
+		} else if (this.gameService.seconds <= 0.4) {
 			subtrahend = 0.05;
 		}
 
