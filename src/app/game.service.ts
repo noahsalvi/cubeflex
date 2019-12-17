@@ -22,7 +22,7 @@ export class GameService {
 
 	reset(): void {
 		this.level = 1;
-		this.seconds = 3;
+		this.seconds = 2;
 		this.isGameover = false;
 		this.reason = null;
 	}

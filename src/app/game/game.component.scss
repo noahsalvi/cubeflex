@@ -21,7 +21,7 @@
 	overflow: hidden;
 }
 
-@media (orientation: landscape) {
+@media (min-width: 515px) {
 	header {
 		width: 100vw;
 		display: flex;
@@ -74,7 +74,7 @@
 	}
 }
 
-@media (orientation: portrait) {
+@media (max-width: 514px) {
 	header {
 		width: 100vw;
 		display: flex;

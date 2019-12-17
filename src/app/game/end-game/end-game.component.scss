@@ -4,12 +4,12 @@
 	.container {
 		font-family: "Poppins", sans-serif;
 		color: white;
-		// position: absolute;
-		// left: 50%;
-		// transform: translate(-50%, -50%);
-		// top: 50%;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		top: 50%;
 		margin: 0 auto;
-		width: fit-content;
+		padding-top: 70px;
 	}
 
 	.reason {

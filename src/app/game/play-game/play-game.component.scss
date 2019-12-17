@@ -1,6 +1,114 @@
 @import "src/assets/styles/variables.scss";
 
-@media (orientation: portrait) {
+@media (max-width: 630px) {
+	.container {
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: center;
+		align-items: center;
+
+		.cubes {
+			margin-top: 5%;
+			width: fit-content;
+			.cube-row {
+				display: flex;
+				padding-bottom: 2.5vw;
+
+				&:last-child {
+					padding-bottom: 0;
+				}
+
+				.cube {
+					height: 29vw;
+					width: 20.71vw;
+					border-radius: 4vw;
+					background-color: #eeeeee;
+					border: 1.8vw solid $grayColor;
+
+					margin-right: 2.5vw;
+
+					cursor: pointer;
+
+					&:last-child {
+						//remove margin from last element on row
+						margin-right: 0;
+					}
+
+					&:hover,
+					&:active {
+						transform: scale(1.03);
+					}
+				}
+
+				.active {
+					@keyframes cardActive {
+						50% {
+							transform: scale(1.04);
+						}
+
+						to {
+							transform: scale(1);
+						}
+					}
+
+					animation: cardActive 0.2s;
+					background: $accentColor;
+
+					&:hover {
+						background-color: #57ff9a;
+					}
+				}
+
+				.wrong {
+					background: #fd7f7f;
+					border-color: #ff5858;
+					@keyframes pulsing {
+						50% {
+							transform: scale(1.06);
+						}
+					}
+
+					animation: pulsing 1s infinite ease-out;
+				}
+			}
+		}
+
+		.info {
+			text-align: center;
+			color: white;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+
+			#level {
+				font-size: 60px;
+				min-width: 245px;
+			}
+
+			#seconds {
+				margin-top: -20px;
+				font-size: 50px;
+				color: rgb(223, 223, 223);
+				width: 100%;
+			}
+
+			#seconds.expired {
+				color: #ff5858;
+				transform: scale(1.1);
+				@keyframes blinking {
+					50% {
+						opacity: 0;
+					}
+				}
+
+				animation: blinking 0.8s infinite;
+			}
+		}
+	}
+}
+
+@media (min-width: 631px) and (max-width: 1010px) {
 	.container {
 		margin: 0 auto;
 		display: flex;
@@ -20,8 +128,8 @@
 				}
 
 				.cube {
-					height: 29vw;
-					width: 20.71vw;
+					height: calc(190px - 2vw);
+					width: calc(153.69px - 2.8005794302vw);
 					border-radius: 2.2vh;
 					background-color: #eeeeee;
 					border: 1.1vh solid $grayColor;
@@ -109,7 +217,7 @@
 	}
 }
 
-@media (orientation: landscape) {
+@media (min-width: 1010px) {
 	.container {
 		margin: 0 auto;
 		display: flex;

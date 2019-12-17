@@ -12,6 +12,7 @@ import { Howl, Howler } from "howler";
 export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 	rand: number;
 	level: number;
+
 	seconds: number;
 	secondsRounded: number;
 	interval;
@@ -32,9 +33,8 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 				.getElementById("c-" + i)
 				.addEventListener("click", () => this.checkCube("c-" + i));
 		}
-		this.level = this.gameService.level;
-		this.secondsRounded = this.gameService.seconds;
 
+		this.level = this.gameService.level;
 		this.correctHowl = new Howl({ src: ["assets/sounds/correct.wav"] });
 		this.wrongHowl = new Howl({ src: ["assets/sounds/wrong.mp3"] });
 	}
@@ -65,13 +65,26 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 		document.getElementById("c-" + this.rand).classList.remove("active");
 	}
 
+	updateSeconds() {
+		let subtrahend = 0.1;
+
+		if (this.gameService.seconds <= 0.6) {
+			subtrahend = 0.05;
+		}
+
+		this.gameService.seconds -= subtrahend;
+	}
+
 	checkCube(id: string) {
 		if (!this.gameService.isGameover) {
 			if (id == "c-" + this.rand) {
 				clearInterval(this.interval);
-				this.gameService.seconds = this.gameService.seconds - 0.1;
+
+				this.updateSeconds();
 				this.gameService.level++;
+
 				this.level = this.gameService.level;
+
 				this.correctHowl.play();
 				this.removeActive();
 				this.game();
@@ -93,8 +106,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 
 		this.interval = setInterval(() => {
 			if (this.seconds > 0) {
-				this.seconds -= 0.1;
-				this.secondsRounded = Math.round(this.seconds * 100) / 100;
+				this.seconds -= 0.01;
 			} else {
 				clearInterval(this.interval);
 				this.gameService.gameover("time");
@@ -105,7 +117,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit, OnDestroy {
 					2500
 				);
 			}
-		}, 100);
+		}, 10);
 	}
 
 	ngOnDestroy() {
