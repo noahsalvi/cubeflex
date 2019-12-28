@@ -1,15 +1,10 @@
 @import "src/assets/styles/variables.scss";
 
-@media (orientation: landscape) {
+@media (min-height: 746px) {
 	.container {
 		font-family: "Poppins", sans-serif;
 		color: white;
-		position: absolute;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		top: 50%;
-		margin: 0 auto;
-		padding-top: 70px;
+		width: 100%;
 	}
 
 	.reason {
@@ -20,24 +15,23 @@
 
 	.titel {
 		height: auto;
-		h1 {
+		text-align: center;
+		.level {
 			text-align: center;
 			font-size: 60px;
 		}
-	}
-
-	.seconds {
-		height: auto;
-		h2 {
+		.seconds {
+			text-align: center;
 			font-size: 50px;
 			color: #dfdfdf;
-			text-align: center;
 		}
 	}
 
 	.button {
-		margin-top: 70px; //more space between text and button
-		height: auto;
+		position: absolute;
+		bottom: 15%;
+		left: 50%;
+		transform: translate(-50%, 50%);
 		.buttonRounded {
 			margin: 0 auto;
 			background-color: $accentColor2;
@@ -65,11 +59,13 @@
 	}
 }
 
-@media (orientation: portrait) {
+@media (max-height: 745px) {
 	.container {
 		font-family: "Poppins", sans-serif;
 		color: white;
-		margin-top: 10%;
+		margin: 0 auto;
+		width: 100%;
+		margin-top: 20px;
 	}
 
 	.reason {
@@ -80,19 +76,11 @@
 
 	.titel {
 		height: auto;
-
-		h1 {
-			text-align: center;
+		text-align: center;
+		.level {
 			font-size: 35px;
 		}
-	}
-
-	.seconds {
-		height: auto;
-		text-align: center;
-
-		h2 {
-			text-align: center;
+		.seconds {
 			font-size: 32px;
 			color: rgb(223, 223, 223);
 		}
@@ -100,9 +88,9 @@
 
 	.button {
 		position: absolute;
+		bottom: 20%;
 		left: 50%;
-		bottom: 10%;
-		transform: translate(-50%);
+		transform: translate(-50%, 50%);
 		.buttonRounded {
 			margin: 0 auto;
 			background-color: $accentColor2;

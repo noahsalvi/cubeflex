@@ -1,11 +1,8 @@
 <div class="container">
 	<div class="reason">{{ reason }}</div>
 	<div class="titel">
-		<h1>You reached Level {{ level }}</h1>
-	</div>
-
-	<div class="seconds">
-		<h2>{{ seconds | number: "1.1" }}s</h2>
+		<div class="level">You reached Level&nbsp;{{ level }}</div>
+		<div class="seconds">{{ seconds | number: "1.1" }}s</div>
 	</div>
 
 	<div class="button">

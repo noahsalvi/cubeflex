@@ -21,19 +21,20 @@
 	overflow: hidden;
 }
 
-@media (min-width: 515px) {
+@media (min-width: 631px) {
 	header {
 		width: 100vw;
 		display: flex;
 		align-items: center;
-		height: 200px;
+		margin-top: 60px;
+		padding-bottom: 30px;
 
 		.logo {
 			height: fit-content;
 			margin: 0 auto;
 			background: $mainColor;
 			border-radius: 20em;
-			padding: 0 40px;
+			// padding: 0 40px; is not visible due to background
 			display: flex;
 			align-items: center;
 			animation: appear 0.5s;
@@ -74,7 +75,7 @@
 	}
 }
 
-@media (max-width: 514px) {
+@media (max-width: 630px) {
 	header {
 		width: 100vw;
 		display: flex;
@@ -127,5 +128,7 @@
 }
 
 .section {
-	height: calc(100% - 200px);
+	height: calc(
+		100% - 200px
+	); //adds a little space at the bottom of the game component
 }
